@@ -1,9 +1,13 @@
 package com.salesbanking.services;
 
 import com.salesbanking.entities.ContaBancaria;
+import com.salesbanking.entities.Transacao;
 import com.salesbanking.repository.ContasRepository;
+import com.salesbanking.repository.TransacaoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class ContaService {
@@ -11,12 +15,11 @@ public class ContaService {
     @Autowired
     ContasRepository contasRepository;
 
+    @Autowired
+    TransacaoRepository transacaoRepository;
+
     public void salvarConta(ContaBancaria conta){
         contasRepository.save(conta);
-    }
-
-    public ContaBancaria buscarContaPorId(Long id){
-        return contasRepository.findById(id).get();
     }
 
     public Boolean verificarSaldo(ContaBancaria conta, double valor){
@@ -25,15 +28,20 @@ public class ContaService {
 
     public void depositar(ContaBancaria conta, double valor){
         conta.setSaldo(conta.getSaldo()+valor);
-        System.out.println("Operação realizada com sucesso");
+        salvarConta(conta);
     }
 
     public void sacar(ContaBancaria conta, double valor){
         if(verificarSaldo(conta,valor)){
             conta.setSaldo(conta.getSaldo()-valor);
-            System.out.println("Operação efetuada com sucesso.");
-        } else {
-            System.out.println("Saldo insulficiente para realizar a operação");
         }
+    }
+
+    public List<ContaBancaria> listarContas(){
+        return contasRepository.findAll();
+    }
+
+    public ContaBancaria buscarContaPorId(Long id){
+        return contasRepository.findById(id).get();
     }
 }
