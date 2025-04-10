@@ -51,11 +51,11 @@ public class DemoApplication implements CommandLineRunner {
 //		transacaoService.registrarTransacao(3l,2l,2000);
 
 //		var conta = contasRepository.findById(2l).get();
-
-		System.out.println(transacaoRepository.findAll());
-		System.out.println("Aqui vou exibir todas as transações de determinada conta: ");
-		System.out.println(transacaoService.listarTransacoesPorConta(1l));
-		System.out.println("\nAqui vou exibir as ultimas 3 transações de determinada conta: ");
-		System.out.println(transacaoService.exibirExtratoSimplificado(1l));
+//
+//		System.out.println(transacaoRepository.findAll());
+//		System.out.println("Aqui vou exibir todas as transações de determinada conta: ");
+//		System.out.println(transacaoService.listarTransacoesPorConta(1l));
+//		System.out.println("\nAqui vou exibir as ultimas 3 transações de determinada conta: ");
+//		System.out.println(transacaoService.exibirExtratoSimplificado(1l));
 	}
 }

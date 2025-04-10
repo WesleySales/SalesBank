@@ -1,5 +1,6 @@
 package com.salesbanking.services;
 
+import com.salesbanking.dto.ClienteDTO;
 import com.salesbanking.entities.Cliente;
 import com.salesbanking.repository.ClienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +16,8 @@ public class ClienteService {
     @Autowired
     private ClienteRepository repository;
 
-    public void cadastrarCliete(Cliente cliente){
+    public void cadastrarCliete(ClienteDTO data){
+        var cliente = new Cliente(data);
         repository.save(cliente);
     }
 
