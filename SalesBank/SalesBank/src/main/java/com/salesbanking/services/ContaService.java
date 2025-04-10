@@ -29,11 +29,13 @@ public class ContaService {
     public void depositar(ContaBancaria conta, double valor){
         conta.setSaldo(conta.getSaldo()+valor);
         salvarConta(conta);
+
     }
 
     public void sacar(ContaBancaria conta, double valor){
         if(verificarSaldo(conta,valor)){
             conta.setSaldo(conta.getSaldo()-valor);
+            salvarConta(conta);
         }
     }
 

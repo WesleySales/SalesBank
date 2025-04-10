@@ -62,11 +62,11 @@ public class ContaBancaria {
     @Override
     public String toString() {
         return "ContaBancaria{" +
-                "idConta=" + idConta +
-                ", agencia='" + agencia + '\'' +
-                ", numeroDaConta='" + numeroDaConta + '\'' +
-                ", saldo=" + saldo +
-                ", titular=" + titular.getNome() +
+                "id: " + idConta +
+                ", agencia: " + agencia +
+                ", numero da conta: " + numeroDaConta  +
+                ", saldo: R$" + saldo +
+                ", titular: " + titular.getNome() +
                 '}';
     }
 }
