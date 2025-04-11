@@ -23,14 +23,25 @@ public class Transacao {
     private double valorTransacao;
     private LocalDateTime dataTransacao;
 
+    private boolean statusTransacao = true;
+
     public Transacao() {
         this.dataTransacao = LocalDateTime.now();
     }
+
     public Transacao(ContaBancaria contaOrigem, ContaBancaria contaDestino, double valorTransacao) {
         this.contaOrigem = contaOrigem;
         this.contaDestino = contaDestino;
         this.valorTransacao = valorTransacao;
         this.dataTransacao = LocalDateTime.now();
+    }
+
+    public void setStatusTransacao(boolean statusTransacao) {
+        this.statusTransacao = statusTransacao;
+    }
+
+    public boolean isStatusTransacao() {
+        return statusTransacao;
     }
 
     public Long getIdTransacao() {
@@ -76,11 +87,12 @@ public class Transacao {
     @Override
     public String toString() {
         return "Transacao{" +
-                "uuidTransacao=" + idTransacao +
-                ", contaOrigem=" + contaOrigem.getNumeroDaConta() +
-                ", contaDestino=" + contaDestino.getNumeroDaConta() +
-                ", valorTransacao=" + valorTransacao +
-                ", dataTransacao=" + dataTransacao +
+                "idTransacao=" + idTransacao +
+                ", origem=" + contaOrigem.getTitular().getNome() +
+                ", destino=" + contaDestino.getTitular().getNome() +
+                ", valor=" + valorTransacao +
+                ", data=" + dataTransacao +
+                ", efetuada=" + statusTransacao +
                 '}';
     }
 }

@@ -1,5 +1,6 @@
 package com.salesbanking.entities;
 
+import com.salesbanking.dto.ClienteDTO;
 import jakarta.persistence.*;
 
 @Entity
@@ -30,6 +31,14 @@ public class Cliente {
         this.CPF = CPF;
         this.email = email;
         this.senha = senha;
+    }
+
+    public Cliente (ClienteDTO data){
+        this.id = data.id();
+        this.nome = data.nome();
+        this.CPF = data.CPF();
+        this.email = data.email();
+        this.senha = data.senha();
     }
 
     public Long getId() {

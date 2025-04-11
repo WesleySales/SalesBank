@@ -39,24 +39,12 @@ public class ContaBancaria {
         return idConta;
     }
 
-    public void setIdConta(Long idConta) {
-        this.idConta = idConta;
-    }
-
     public String getAgencia() {
         return agencia;
     }
 
-    public void setAgencia(String agencia) {
-        this.agencia = agencia;
-    }
-
     public String getNumeroDaConta() {
         return numeroDaConta;
-    }
-
-    public void setNumeroDaConta(String numeroDaConta) {
-        this.numeroDaConta = numeroDaConta;
     }
 
     public double getSaldo() {
@@ -71,7 +59,14 @@ public class ContaBancaria {
         return titular;
     }
 
-    public void setTitular(Cliente titular) {
-        this.titular = titular;
+    @Override
+    public String toString() {
+        return "ContaBancaria{" +
+                "id: " + idConta +
+                ", agencia: " + agencia +
+                ", numero da conta: " + numeroDaConta  +
+                ", saldo: R$" + saldo +
+                ", titular: " + titular.getNome() +
+                '}';
     }
 }
