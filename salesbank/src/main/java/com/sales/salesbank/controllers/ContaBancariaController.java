@@ -2,11 +2,7 @@ package com.sales.salesbank.controllers;
 
 import com.sales.salesbank.entities.ContaBancaria;
 import com.sales.salesbank.services.ContaBancariaService;
-import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.media.Content;
-import io.swagger.v3.oas.annotations.media.Schema;
-import io.swagger.v3.oas.annotations.responses.ApiResponse;
-import io.swagger.v3.oas.annotations.tags.Tag;
+import com.sales.salesbank.services.ExtratoBancarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -19,6 +15,9 @@ public class ContaBancariaController {
 
     @Autowired
     private ContaBancariaService service;
+
+    @Autowired
+    private ExtratoBancarioService extratoBancarioService;
 
     @GetMapping
     public ResponseEntity<List<ContaBancaria>> listarClientes(){
@@ -38,5 +37,14 @@ public class ContaBancariaController {
         return ResponseEntity.ok().body(
                 "Saldo R$: "+conta.getSaldo());
     }
+
+    @GetMapping(value="/{id}/extrato")
+    public ResponseEntity exibirExtratoSimplificado(@PathVariable Long id){
+        var conta = service.buscarContaPorId(id);
+        var lista = extratoBancarioService.exibirExtratoSimplificado(id);
+        return ResponseEntity.ok().body(lista);
+    }
+
+
 
 }

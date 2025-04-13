@@ -51,5 +51,10 @@ public class SalesbankApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		System.out.println("SPRING FUNCIONANDO. BEM VINDO AO SALESBANKING");
+
+		System.out.println("\nExibindo transacoes da conta 1");
+		System.out.println(transacaoService.buscarTransacoes(1l));
+		System.out.println("\nExibindo EXTRATO DA CONTA 1");
+		System.out.println(extratoBancarioService.exibirExtratoSimplificado(1l));
 	}
 }
